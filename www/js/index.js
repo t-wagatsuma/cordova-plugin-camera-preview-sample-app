@@ -44,6 +44,12 @@ var app = {
     document.getElementById('zoomValue').innerHTML = zoom;
     CameraPreview.setZoom(zoom);
   },
+  openDialog: function(){
+    document.getElementById('exampleModal').hidden=false;
+  },
+  closeDialog: function(){
+    document.getElementById('exampleModal').hidden=true;
+  },
 
   changePreviewSize: function(){
     window.smallPreview = !window.smallPreview;
@@ -73,6 +79,8 @@ var app = {
     document.getElementById('takePictureButton').addEventListener('click', this.takePicture, false);
     document.getElementById('selectColorEffect').addEventListener('change', this.changeColorEffect, false);
     document.getElementById('selectFlashMode').addEventListener('change', this.changeFlashMode, false);
+    document.getElementById('openDialog').addEventListener('click', this.openDialog, false);
+    document.getElementById('closeDialog').addEventListener('click', this.closeDialog, false);
 
     if(navigator.userAgent.match(/Android/i)  == "Android"){
       document.getElementById('zoomSlider').addEventListener('change', this.changeZoom, false);
@@ -90,6 +98,6 @@ var app = {
   }
 };
 
-document.addEventListener('deviceready', function(){	
+document.addEventListener('deviceready', function(){
   app.init();
 }, false);
